@@ -61,7 +61,7 @@ In the **Source** version, you can write up your document in LaTeX.
 
 ![](img/quarto_intro/Screenshot_3.png){width="400"}
 
-#### .qmd files
+#### .qmd files {#qmd-files}
 
 Quarto will automatically provide you with two **.qmd files**, as well as a **.yml file**.
 
@@ -116,6 +116,8 @@ To avoid this, we can set up a code chunk, looking like this:
 ![](img/quarto_intro/Screenshot%202023-10-11%20at%2014.55.13.png)
 
 This will prevent the output of this code chunk to be depicted on your website, while the package is otherwise active and can be used in the following R code. This is, by the way, true for all R code and data sets you will use: they will be active in your document and can be used in different code chunks, once provided.
+
+**It is crucial that you include this code chunk** (#\| ...) **right beneath the {r}! Otherwise this command will NOT WORK.**
 
 A code block included in your document could look like the following. Here I used the option
 
@@ -194,17 +196,17 @@ To understand about more about the details of which files to edit etc., please s
 
 ### Getting Started
 
-1. Install the Quarto CLI tool for your operating system from the [Quarto Website](https://quarto.org/docs/get-started/)
-2. Install the [VSCode Quarto extension](https://marketplace.visualstudio.com/items?itemName=quarto.quarto)
+1.  Install the Quarto CLI tool for your operating system from the [Quarto Website](https://quarto.org/docs/get-started/)
+2.  Install the [VSCode Quarto extension](https://marketplace.visualstudio.com/items?itemName=quarto.quarto)
 
 ### Using Quarto
 
 The basic workflow is as follows:
 
-1. Create or modify `.qmd` objects etc as described above in the Rstudio section about [Quarto markdown files](#qmd-files)
-2. Within VSCode, make sure you've opened it in the repository containing all the files
-3. Press <kdb>ctrl</kbd> + <kbd>shift</kbd> + <kbd>p</kbd> to bring up your command palette
-   1. To preview a local 'live' version of HTML or website versions, you can type `Quarto: preview`. To close the live preview, press <kbd>ctrl</kbd>+<kbd>c</kbd> in the VSCode terminal.
-   2. To render all the files e.g. final HTML and/or PDF versions, you can type `Quarto: Render Project`, where you will be given different options depending on the formats defined in the `_quarto.yml` file.
+1.  Create or modify `.qmd` objects etc as described above in the Rstudio section about [Quarto markdown files](#qmd-files)
+2.  Within VSCode, make sure you've opened it in the repository containing all the files
+3.  Press <kdb>ctrl</kbd> + <kbd>shift</kbd> + <kbd>p</kbd> to bring up your command palette
+    1.  To preview a local 'live' version of HTML or website versions, you can type `Quarto: preview`. To close the live preview, press <kbd>ctrl</kbd>+<kbd>c</kbd> in the VSCode terminal.
+    2.  To render all the files e.g. final HTML and/or PDF versions, you can type `Quarto: Render Project`, where you will be given different options depending on the formats defined in the `_quarto.yml` file.
 
 For further VSCode integrations, just type `Quarto:` into your command palette and explore all the options.
