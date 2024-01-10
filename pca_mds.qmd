@@ -262,7 +262,7 @@ PCA_plot_1 <- p +
                alpha=0.5    ## Makes points semi transparent.
               )
 PCA_plot_1
-ggsave("PCA_plot_1.png")
+ggsave("img/pca_mds/PCA_plot_1.png")
 ```
 
 ![](img/pca_mds/PCA_plot_1.png)
@@ -299,7 +299,7 @@ PCA_plot_2 <-  ggplot() +
         pch=17                   ## Change shape of point to solid triangle
      )
 PCA_plot_2
-ggsave("PCA_plot_2.png")
+ggsave("img/pca_mds/PCA_plot_2.png")
 ```
 
 ![](img/pca_mds/PCA_plot_2.png)
@@ -327,7 +327,7 @@ PCA_plot_ap <-  ggplot() +
         pch=17                   ## Change shape of point to solid triangle
      )
 PCA_plot_ap
-ggsave("PCA_plot_ap.png")
+ggsave("img/pca_mds/PCA_plot_ap.png")
 ```
 
 ![](img/pca_mds/PCA_plot_ap.png)
@@ -416,7 +416,7 @@ ggplot(mds_coords_pl1) +
     geom_point(aes(x=C1, y=C2, col=Country)) +
     theme_minimal() +
     coord_equal()
-ggsave("MDS_poplist1.png")
+ggsave("img/pca_mds/MDS_poplist1.png")
 
 ```
 
