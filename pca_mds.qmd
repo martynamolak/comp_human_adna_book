@@ -54,7 +54,7 @@ As you can see, individuals whose genotypes were masked are shifted towards the 
 
 ## Projection
 
-The idea of projection is simple, and applies similarly to both PCA and MDS. In PCA, you use a subset of the dataset to calculate your axes of variation, and then apply the resulting transformation to additional data, thus projecting them onto those axes. th eimportant detail is that the variation between projected individuals is not taken into account when deciding which the axes of maximal variation are. Similarly, in MDS you project points to the MDS space based on their distances to the points that constructed the space, disregarding the distances of the projected points to one another.
+The idea of projection is simple, and applies similarly to both PCA and MDS. In PCA, you use a subset of the dataset to calculate your axes of variation, and then apply the resulting transformation to additional data, thus projecting them onto those axes. The important detail is that the variation between projected individuals is not taken into account when deciding which the axes of maximal variation are. Similarly, in MDS you project points to the MDS space based on their distances to the points that constructed the space, disregarding the distances of the projected points to one another.
 
 Below is a PCA plot calculated on present-day West Eurasian populations together with some Mesolithic hunter-gatherer individuals (in light brown). On the left side of the plot, the ancient individuals have been included in the calculation of the principal components, while on the right side they are projected on the principal components of the present-day West Eurasians.
 
@@ -65,15 +65,15 @@ There are two things to note here:
 -   First, comparing the placement of Eastern European hunter-gatherers (brown right-facing triangles) between the two plots, you can see that projecting these individuals does indeed provide results that are not affected by mean imputation, and thus are not shifted towards the origin.
 -   Secondly, if you compare the positions of the Western European hunter-gatherers (brown half-filled circles), you will notice that projection causes these individuals to be plotted closer to present-day populations.
 
-The degree of missingness in the Western European hunter-gatherers (WHG) is relatively low, and hence the shift in thir placement between the two plots is not the result of mean imputation. Instead, when projected the WHG illustrate the effects of **shrinkage**.
+The degree of missingness in the Western European hunter-gatherers (WHG) is relatively low, and hence the shift in their placement between the two plots is not the result of mean imputation. Instead, when projected the WHG illustrate the effects of **shrinkage**.
 
 ## Shrinkage
 
 Shrinkage comes in two flavours:
 
--   The kind of shrinkage you saw with the WHGs above, is pretty intuitive. When projecting populations on axes f variation that do not capture all the variation of the projected populations, they will appear as if they have less variation than reality. This translates to the points "shrinking" towards the origin slightly. that is to say, because the WHG individuals come from a population that harboured far more genetic variation than is present within present-day West Eurasian populations, much of their true variation is "hidden" when projecting them.
+-   The kind of shrinkage you saw with the WHGs above, is pretty intuitive. When projecting populations on axes of variation that do not capture all the variation of the projected populations, they will appear as if they have less variation than in reality. This translates to the points "shrinking" towards the origin slightly. That is to say, because the WHG individuals come from a population that harboured far more genetic variation than is present within present-day West Eurasian populations, much of their true variation is "hidden" when projecting them.
 
--   The second kind of shrinkage (a.k.a. projection bias) arises because "samples used to calculate the PC axes"stretch" the axes" (from the [smartpca documentation](https://github.com/DReichLab/EIG/tree/master/POPGEN)). This problem is exacerbated in datasets where the number of markers far exceeds the number of samples used for PC calculation. This is often the case in human population genomics.
+-   The second kind of shrinkage (a.k.a. projection bias) arises because "samples used to calculate the PC axes "stretch" the axes" (from the [smartpca documentation](https://github.com/DReichLab/EIG/tree/master/POPGEN)). This problem is exacerbated in datasets where the number of markers far exceeds the number of samples used for PC calculation. This is often the case in human population genomics.
 
 While the first shrinkage flavour can be arguess as a feature of PCA, projection bias can be a problem when trying to compare present-day populations to projected ancient populations. A demonstration of the effects of shrinkage can be seen below:
 
