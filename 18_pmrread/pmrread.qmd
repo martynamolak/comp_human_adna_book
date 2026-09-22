@@ -36,7 +36,8 @@ Kinship coefficient $\phi_{ij}$ , under some assumptions such as limited inbreed
 
 $$
 \phi_{ij} = (^1/_2)r_{ij}
-$$ and hence provides a direct relationship between the degrees of relatedness from the pedigree and the expected kinship coefficient $\phi_{ij}$ .
+$$ 
+and hence provides a direct relationship between the degrees of relatedness from the pedigree and the expected kinship coefficient $\phi_{ij}$ .
 
 ![**Table 1.** Values of the coefficient of relatedness and the kinship coefficient for different pedigree relationships up to the second-degree, assuming that $C_I$ = 0. From Rohrlach et al. [-@Rohrlach2023.04.17.537144].]
 
