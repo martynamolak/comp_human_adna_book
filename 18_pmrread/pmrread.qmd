@@ -65,7 +65,11 @@ The PMR can be used to estimate the kinship coefficient, which, assuming that we
 ### Accounting for pseudohaploidization
 
 Due to pseudohaploidisation (ie. drawing one allele randomly for each position) identical individuals will have an expected PMR of half of this between unrelated individuals.\
-The estimate of relatedness coefficient $r$ needs therefore be corrected using the expected mismatch rate in non-related individuals. In [@Kennett2017-qw] they chose correction based on the approximate maximum mismatch rates observed: $b = max(PMR_{observed})/2$ . The estimator they used is thus:\
+The estimate of relatedness coefficient $r$ needs therefore be corrected using the expected mismatch rate in non-related individuals. In [@Kennett2017-qw] they chose correction based on the approximate maximum mismatch rates observed:
+$$
+b = max(PMR_{observed})/2 .
+$$
+The estimator they used is thus:
 $$
 r = 1 - ((PMR_{ij} - b)/b) .
 $$
@@ -98,11 +102,11 @@ Relationship Estimation from Ancient DNA [@Monroy_Kuhn2018-fb] - formalized impl
 
 ### Pluses
 
-The method has been shown to work quite well with as little as **0.1x shotgun coverage** per genome. It has very **simple assumptions** estimating the expected pairwise mismatch rate from the data **without the need for population allele frequencies**. It can thus be used as **part of initial QC procedures** (e.g. identifying duplicated individuals) or in populations (or species) for which little additional information is available.\
+The method has been shown to work quite well with as little as **0.1x shotgun coverage** per genome. It has very **simple assumptions** estimating the expected pairwise mismatch rate from the data **without the need for population allele frequencies**. It can thus be used as **part of initial QC procedures** (e.g. identifying duplicated individuals) or in populations (or species) for which little additional information is available.
 
 ### Minuses
 
-READ had been implemented as a **Python 2** script. The last version of Python 2 was released in 2020 and some systems have already stopped supporting the language. Furthermore, READ wrote a **large number of temporary files** to the hard disk which were then analyzed by a separate R script called from the Python script.
+READ had been implemented as a **Python 2** script. The last version of Python 2 was released in 2020 and some systems have already stopped supporting the language. Furthermore, READ writes a **large number of temporary files** to the hard disk which are then analyzed by a separate R script called from the Python script.
 
 ## READv2
 
@@ -124,15 +128,15 @@ New implementation of READ [@Alacamli2024-xq]
 
 ### Noteworthy properties
 
-Overall, READv2 performs well down to at least **0.1X sequence data** in the simulated dataset. This corresponded to on average about 1,878 overlapping SNPs for each pair of individuals at an expected mismatch for unrelated individuals of ∼0.247.
+Overall, READv2 performs well down to at least **0.1x sequence data** in the simulated dataset. This corresponded to on average about 1,878 overlapping SNPs for each pair of individuals at an expected mismatch for unrelated individuals of ∼0.247.
 
 In default settings, READv2 performs a genome-wide estimate of the pairwise mismatch rate, based on which it will assess the degree of relationship in each pair of individuals. This is followed by a **separate round of classification for first-degree relatives**. Here, the genome is divided into 20Mb windows and the proportion of windows that are classified as either "identical/twin" or "unrelated" is estimated. These proportions correspond to Cotterman coefficients $k_0$ -- windows classified as unrelated (i.e. no shared chromosome), and $k_2$ -- windows classified as identical (i.e. both chromosomes shared). Expected $k_0 + k_2$ is low for parent-offspring and around 0.5 for full siblings when sufficient data are available.\
 If that proportion is less than 0.3, the pair is classified as **"parent-offspring"**; if it is between 0.35 and 0.6, the pair is classified as **"siblings"**. For other proportions, or when the number of effectively overlapping SNPs is below 10,000, the pair remains classified as "first-degree" without further specification.\
-The two types of relations are well separated down to 0.5X coverage in the simulated dataset (or ∼8,000 "effectively overlapping SNPs"), but they overlap at 0.2X and below. Hence, to avoid wrongly classifying parent-offspring pairs as siblings, READv2 applies a default cutoff of 10,000 effectively overlapping SNPs, below which classification is not performed. (In [@Rivollat2020-qq] a cutoff of 7000 effective SNP number cutoff was used.)
+The two types of relations are well separated down to 0.5x coverage in the simulated dataset (or ∼8,000 "effectively overlapping SNPs"), but they overlap at 0.2x and below. Hence, to avoid wrongly classifying parent-offspring pairs as siblings, READv2 applies a default cutoff of 10,000 effectively overlapping SNPs, below which classification is not performed. (In [@Rivollat2020-qq] a cutoff of 7000 effective SNP number cutoff was used.)
 
 ### Warnings
 
-At low coverage (0.05x and 0.1x) there are high false positive rates for second- and third-degree relatedness; many unrelated pairs are classified into these categories. At 0.01X, unrelated individuals are even classified as first-degree or identical twins, resulting in a reduced false positive rate for second- and third-degree but an increased false positive rate for first-degree. To avoid false classifications in empirical data, READv2 applies a conservative threshold of 5000 "effectively overlapping SNPs", below which no attempt to classify third-degree relatives is taken.
+At low coverage (0.05x and 0.1x) there are high false positive rates for second- and third-degree relatedness; many unrelated pairs are classified into these categories. At 0.01x, unrelated individuals are even classified as first-degree or identical twins, resulting in a reduced false positive rate for second- and third-degree but an increased false positive rate for first-degree. To avoid false classifications in empirical data, READv2 applies a conservative threshold of 5000 "effectively overlapping SNPs", below which no attempt to classify third-degree relatives is taken.
 
 According to the authors READv2 alone can lead to very similar results as the combination of READv1 and lcMLkin. output table by including information such as the number of overlapping SNPs, the number of effectively overlapping SNPs, and the kinship coefficient $μ$ (= 1 - normalized *P*0)
 
@@ -145,28 +149,22 @@ READv2 is very similar in its approach to BREADR [@Rohrlach2025-va] and TKGWV2 [
 
 | Method | Reference | Min. Coverage | Size of SNP panel used | Degree up to | Within Degree Differentiation | Type of Data Needed |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **lcMLkin** | [@Lipatov2015-uo] | 2X | 100,000 | Third | First degree (parent-offspring, siblings)‡ | Biallelic genotypes, genotype likelihoods and population allele frequencies* |
-| **ngsRelate** | [@Korneliussen2015-ub] | 1X | 100,000 | Third | First degree, some second degree (half-siblings) and some third degree (first cousins)‡ | Genotype likelihoods and population allele frequencies** |
-| **TKGWV2** | [@Fernandes2021-ze] | 0.026X | ~22,000,000 | Second | - | Pseudohaploid genotypes and population allele frequencies |
-| **KIN** | [@Popli2023-ny] | 0.05X | Not specified | Third | First degree | Aligned reads*** (.bam files) |
-| **BREADR** | [@Rohrlach2025-va] | 0.04X | ~29,000,000 | Second | - | Pseudohaploid genotypes |
-| **ancIBD** | [@Ringbauer2024-kz] | 0.25X (WGS) or 1X (1240k SNP capture) | ~1,200,000 | Sixth | First and second degree | Imputed genotypes**** |
+| **lcMLkin** | [@Lipatov2015-uo] | 2x | 100,000 | Third | First degree (parent-offspring, siblings)‡ | Biallelic genotypes, genotype likelihoods and population allele frequencies* |
+| **ngsRelate** | [@Korneliussen2015-ub] | 1x | 100,000 | Third | First degree, some second degree (half-siblings) and some third degree (first cousins)‡ | Genotype likelihoods and population allele frequencies** |
+| **TKGWV2** | [@Fernandes2021-ze] | 0.026x | ~22,000,000 | Second | - | Pseudohaploid genotypes and population allele frequencies |
+| **KIN** | [@Popli2023-ny] | 0.05x | Not specified | Third | First degree | Aligned reads*** (.bam files) |
+| **BREADR** | [@Rohrlach2025-va] | 0.04x | ~29,000,000 | Second | - | Pseudohaploid genotypes |
+| **ancIBD** | [@Ringbauer2024-kz] | 0.25x (WGS) or 1x (1240k SNP capture) | ~1,200,000 | Sixth | First and second degree | Imputed genotypes**** |
 | **correctKin** | [@Nyerki2023-af] | ~85,000 overlapping markers† | ~1,200,000 | Fourth | - | Pseudohaploid genotypes |
-| **READv1** | [@Monroy_Kuhn2018-fb] | 0.1X | ~1,200,000 | Second | - | Pseudohaploid genotypes |
-| **READv2** | [@Alacamli2024-xq] | 0.05X or ~500 SNPs (first degree)<br>0.1X or ~2,000 SNPs (second degree)<br>0.3X or ~15,000 SNPs (third degree) | 200,000 | Third | First degree | Pseudohaploid genotypes |
+| **READv1** | [@Monroy_Kuhn2018-fb] | 0.1x | ~1,200,000 | Second | - | Pseudohaploid genotypes |
+| **READv2** | [@Alacamli2024-xq] | 0.05x or ~500 SNPs (first degree)<br>0.1x or ~2,000 SNPs (second degree)<br>0.3x or ~15,000 SNPs (third degree) | 200,000 | Third | First degree | Pseudohaploid genotypes |
 
-*Estimated from the input data   
-
-**Optional, can be estimated from the data   
-
-***The required input files for KIN (the number of overlapping sites, the number of pairwise differences, and the probability of runs of homozygosity (ROH) in the windows where individuals have the same long allele sequence) are created by KINgaroo, which is provided together with the KIN package, by using these .bam files.   
-
-****Imputed genotypes are created with GLIMPSE [@Rubinacci2021-tj] by using aligned sequence data (.bam files) as a part of the pipeline.   
-
-† The authors of correctKin report their results with the term "overlapping markers", which stands for the percentage of markers shared by both genotypes.   
-
-‡ This classification is not automatically performed by the tool but can be achieved by comparing different statistics against each other.
-
+>*Estimated from the input data   
+>**Optional, can be estimated from the data   
+>***The required input files for KIN (the number of overlapping sites, the number of pairwise differences, and the probability of runs of homozygosity (ROH) in the windows where individuals have the same long allele sequence) are created by KINgaroo, which is provided together with the KIN package, by using these .bam files.   
+>****Imputed genotypes are created with GLIMPSE [@Rubinacci2021-tj] by using aligned sequence data (.bam files) as a part of the pipeline.   
+>† The authors of correctKin report their results with the term "overlapping markers", which stands for the percentage of markers shared by both genotypes.   
+>‡ This classification is not automatically performed by the tool but can be achieved by comparing different statistics against each other.
 
 
 For further comparison of some of the methods available, you can also refer to the paper by Akturk et al. [-@Akturk2023-yr]
