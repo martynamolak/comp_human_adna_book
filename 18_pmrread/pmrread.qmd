@@ -37,7 +37,6 @@ $$
 \phi_{ij} = (^1/_2)r_{ij}
 $$ and hence provides a direct relationship between the degrees of relatedness from the pedigree and the expected kinship coefficient $\phi_{ij}$ .
 
-![**Table 1.** Values of the coefficient of relatedness and the kinship coefficient for different pedigree relationships up to the second-degree, assuming that $C_I$ = 0. From Rohrlach et al. [-@Rohrlach2023.04.17.537144].]()
 
 | Relationship | Degree | Coefficient of relationship ($r_{ij}$) | Kinship coefficient ($\phi_{ij}$) |
 |-----------------:|:----------------:|:----------------:|:----------------:|
@@ -47,6 +46,8 @@ $$ and hence provides a direct relationship between the degrees of relatedness f
 | **Grandparent-Grandchild** | $2$ | $2^{-2} = 1/4$ | $1/8$ |
 | **Aunt/Uncle - Niece/Nephew** | $2$ | $2 \cdot 2^{-3} = 1/4$ | $1/8$ |
 | **Half-Siblings** | $2$ | $2^{-2} = 1/4$ | $1/8$ |
+
+: **Table 1.** Values of the coefficient of relatedness and the kinship coefficient for different pedigree relationships up to the second-degree, assuming that $C_I$ = 0. From Rohrlach et al. [-@Rohrlach2023.04.17.537144].
 
 ## Pairwise Mismatch Rate (PMR)
 
