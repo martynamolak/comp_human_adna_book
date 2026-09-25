@@ -92,7 +92,7 @@ Only pairs with at least 10,000 overlapping SNPs of the 1240k SNP panel should b
 
 - Classification of each pair of individuals as unrelated, second-degree (i.e. nephew/niece-uncle/aunt, grandparent-grand- child or half-siblings), first-degree (parent-offspring or siblings) or identical individuals/identical twins from the average across the per-window proportions of non-matching alleles (*P*0).
 
-![**Figure 3**. Outline of the general READ workflow to estimate the degree of relationship between two individuals. From](READ1.JPG){fig-align="center" width="60%"}
+![**Figure 3**. Outline of the general READ workflow to estimate the degree of relationship between two individuals. From](READ1.JPG){fig-align="center" width="80%"}
 
 ### Pluses
 
@@ -121,7 +121,7 @@ New implementation of READ [@Alacamli2024-xq]
 According to the authors, READv2 alone can lead to very similar results as the combination of READv1 and lcMLkin. Output table includes information such as the number of overlapping SNPs, the number of effectively overlapping SNPs, and the kinship coefficient $μ$ (= 1 - normalized *P*0)
 
 
-![**Figure 4.** READv2 flowchart. From Alaçamlı et al. [-@Alacamli2024-xq] ](Alacamli.F5.Flowchart.jpg){fig-align="center", width="80%"}
+![**Figure 4.** READv2 flowchart. From Alaçamlı et al. [-@Alacamli2024-xq]](Alacamli.F5.Flowchart.jpg){fig-align="center", width="80%"}
 
 ### Noteworthy properties
 
@@ -232,9 +232,9 @@ normalization_method:
 
 - `--max` - READ uses the maximum across all pairs for normalization. This should be used to test trios where both parents are supposed to be unrelated but the offspring is a first degree relative to both others.
 
-- `--value \<value\>` - READ uses a user-defined value for normalization. This can be used if the value from another population should be used for normalization. That would be useful if only two individuals are available for the test population. A value can be obtained from the NonNormalized*P*0 column of the file meansP0_AncientDNA_normalized from a previous run of READ.
+- `--value <value>` - READ uses a user-defined value for normalization. This can be used if the value from another population should be used for normalization. That would be useful if only two individuals are available for the test population. A value can be obtained from the NonNormalized*P*0 column of the file meansP0_AncientDNA_normalized from a previous run of READ.
 
-Optionally, one can add `--window_size \<value\>` at the end in order to modify the window size used (default: 1,000,000).
+Optionally, one can add `--window_size <value>` at the end in order to modify the window size used (default: 1000000).
 
 #### Output:
 
@@ -313,9 +313,9 @@ python pathTo_Readv2.py -i myGenotypeFile
 
 READv2 options:
 
-- `-i`, `--input_file \<value\>` -- Input file prefix (required). The current READ version only supports Plink bed/bim/fam files.
+- `-i`, `--input_file <value>` -- Input file prefix (required). The current READ version only supports Plink bed/bim/fam files.
 
-- `-n`, `--norm_method \<value\>` -- Normalization method (either 'mean', 'median', 'max' or 'value').
+- `-n`, `--norm_method <value>` -- Normalization method (either 'mean', 'median', 'max' or 'value').
 
   - median (default) -- assuming that most pairs of compared individuals are unrelated, READ uses the median across all pairs for normalization.
 
@@ -325,9 +325,9 @@ READv2 options:
 
   - value -- READ uses a user-defined value for normalization. This can be used if the value from another population should be used for normalization. That would be useful if only two individuals are available for the test population. Normalization value needs to be provided through `--norm_value`
 
-- `--norm_value \<value\>` -- Provide a user-defined normalization value
+- `--norm_value <value>` -- Provide a user-defined normalization value
 
-- `--window_size \<value\>` -- Change window size for block jackknife or for window-based P0 estimates (as in READv1), default: 5000000
+- `--window_size <value>` -- Change window size for block jackknife or for window-based P0 estimates (as in READv1), default: 5000000
 
 - `--window_est` -- Window based estimate of P0 (as opposed to the genome-wide estimate, default in READv2)
 
