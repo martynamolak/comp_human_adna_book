@@ -21,9 +21,9 @@ $$
 r_{ij} = \sum (^1/_2)^{L_{ij}}
 $$ where $L$ is the numbers of generation links between two individuals ($i$ and $j$) through the shortest pathways over each common ancestor. E.g. full siblings are linked by two links through the mother (siblingA - mother - siblingB) and two links through the father (siblingA - father - siblingB), therefore the coefficient of relationship between them is $r = (^1/_2)^2 + (^1/_2)^2 = (^1/_4) + (^1/_4) = (^1/_2)$ (**Figure 1A**), while e.g. a person with their aunt are linked by three links through the shared grandmother/mother and three through the shared grandfather/father, so $r=(^1/_2)^3 + (^1/_2)^3 = (^1/_8) + (^1/_8) = (^1/_4)$ (**Figure 1B**).\
 
-![**Fig 1.** Generation links count for the coefficient of relationship calculation. A) Number of links between two siblings comprises two links through the mother (red) and two links through the father (green). B) Number of links between a person and their aunt comprises three links through the shared grandmother/mother (red) and three through the shared grandfather/father (green).](CoefficientOfRelationship.png){fig-align="center" width="60%"}
+![**Figure 1.** Generation links count for the coefficient of relationship calculation. A) Number of links between two siblings comprises two links through the mother (red) and two links through the father (green). B) Number of links between a person and their aunt comprises three links through the shared grandmother/mother (red) and three through the shared grandfather/father (green).](CoefficientOfRelationship.png){fig-align="center" width="60%"}
 
-Note that under such definition, the coefficient of relationship is a lower bound and an actual value that may be up to a few percent higher due to unaccounted for consanguinity within the pedigree. The value is accurate to within 1% if the full family tree of both individuals is known to a depth of seven generations.
+Note that under such definition, the coefficient of relationship is a lower bound and an actual value that may be up to a few percent higher due to unaccounted for consanguinity within the pedigree.
 
 ### Kinship coefficient
 
@@ -36,10 +36,12 @@ Kinship coefficient $\phi_{ij}$ , under some assumptions such as limited inbreed
 $$
 \phi_{ij} = (^1/_2)r_{ij}
 $$ and hence provides a direct relationship between the degrees of relatedness from the pedigree and the expected kinship coefficient $\phi_{ij}$ .
+test
 
-\![**Table 1.** Values of the coefficient of relatedness and the kinship coefficient for different pedigree relationships up to the second-degree, assuming that $C_I$ = 0. From Rohrlach et al. [-@Rohrlach2023.04.17.537144].\]
 
-| Relationship | Degree | Coefficient of Relationship ($r_{ij}$) | Kinship Coefficient ($\phi_{ij}$) |
+![**Table 1.** Values of the coefficient of relatedness and the kinship coefficient for different pedigree relationships up to the second-degree, assuming that $C_I$ = 0. From Rohrlach et al. [-@Rohrlach2023.04.17.537144].]
+
+| Relationship | Degree | Coefficient of relationship ($r_{ij}$) | Kinship coefficient ($\phi_{ij}$) |
 |-----------------:|:----------------:|:----------------:|:----------------:|
 | **Identical Twins / Same Individual** | $0$ | $2^{0} = 1$ | $1/2$ |
 | **Parent-Offspring** | $1$ | $2^{-1} = 1/2$ | $1/4$ |
