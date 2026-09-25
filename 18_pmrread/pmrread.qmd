@@ -13,6 +13,8 @@ toc: true
 
 **Coefficient of relationship**, denoted $r_{ij}$ , defined by Sewall Wright in 1922 [@Wright1922-vm], is a measure of the degree of biological relationship between two individuals, commonly used in genetics and genealogy. It calculates the proportion of genes that two individuals have in common as a result of their genetic relationship. The coefficient of relationship is related to the coefficient of inbreeding ($f_k$ or $C_{I_k}$) defined by Wright a year earlier. A coefficient of inbreeding for an individual is typically one-half the coefficient of relationship between the parents.
 
+this is a second test text
+
 Coefficient of relationship between the parents approaches a value of 1 as the level of inbreeding increases and approaches 0 the more remote the common ancestors are.
 
 In human relationships, coefficient of relationship is often calculated based on the knowledge of the family tree, typically extending to up to three or four generations, using a formula:
@@ -78,7 +80,7 @@ PMR estimation in ancient-DNA-based inference of relatedness has first been impl
 
 ### Accounting for linkage disequilibrium
 
-Linkage disequilibrium (LD, non-independent co-inheritance) of the loci included in the PMR estimation will bias the results. The non-independence of loci will leas to underestimation of the variance (standard error) of the PMR and hence falsely inflate the confidence of relatedness estimates. Moreover, large shared blocks packed with unpruned SNPs will artificially pull down the overall PMR making individuals look more related than they are, while dense regions of high local diversity will artificially push the PMR up making individuals look less related. \
+Linkage disequilibrium (LD; non-independent co-inheritance) of the loci included in the PMR estimation will bias the results. The non-independence of loci will lead to underestimation of the variance (standard error) of the PMR and hence falsely inflate the confidence of relatedness estimates. Moreover, large shared blocks packed with unpruned SNPs could artificially pull down the overall PMR making individuals look more related than they are, while dense regions of high local diversity could inflate the PMR estimate making individuals look less related. \
 To minimize this effect, variuos approaches can be employed. This is particularly crucial, when analyzing genome-wide (shotgun) data. In the 1240k SNP panel widely used in ancient genomics the analysed loci have already been selected taking LD into account. The approaches to minimize the LD bias that have been employed in PMR estimation comprise PMR estimation separately over consecutive genome fragments (sliding window) and obtaining median estimate among them (e.g., implemented in READv1, and as an option in READv2; **Figure 2C**), and decreasing the number of SNPs included in the analysis using a threshold of physical proximity of SNPs along the genome (thinning; e.g., implemented in BREADR; **Figure 2D**).
 
 ### Good practice
