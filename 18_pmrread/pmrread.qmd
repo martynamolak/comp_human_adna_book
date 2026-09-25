@@ -153,8 +153,8 @@ READv2 is very similar in its approach to BREADR [@Rohrlach2025-va] and TKGWV2 [
 | **READv1** | [@Monroy_Kuhn2018-fb] | 0.1x | \~1,200,000 | Second | \- | Pseudohaploid genotypes |
 | **READv2** | [@Alacamli2024-xq] | 0.05x or \~500 SNPs (first degree)<br>0.1x or \~2,000 SNPs (second degree)<br>0.3x or \~15,000 SNPs (third degree) | 200,000 | Third | First degree | Pseudohaploid genotypes |
 
-> \*Estimated from the input data\
-> \*\*Optional, can be estimated from the data
+> \*Estimated from the input data.\
+> \*\*Optional, can be estimated from the data.\
 > \*\*\*The required input files for KIN (the number of overlapping sites, the number of pairwise differences, and the probability of runs of homozygosity (ROH) in the windows where individuals have the same long allele sequence) are created by KINgaroo, which is provided together with the KIN package, by using these .bam files.\
 > \*\*\*\*Imputed genotypes are created with GLIMPSE [@Rubinacci2021-tj] by using aligned sequence data (.bam files) as a part of the pipeline.\
 > † The authors of correctKin report their results with the term "overlapping markers", which stands for the percentage of markers shared by both genotypes.\
